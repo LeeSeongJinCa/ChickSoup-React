@@ -5,7 +5,7 @@ import RegisterSecond from './RegisterSecond';
 
 const Register = ({ onLoad }) => {
     // Change background-color to Yellow
-    window.onload = onLoad;
+    window.onload = () => onLoad();
     const [next, setNext] = useState(true);
     const movePage = (bool) => {
         setNext(bool);

@@ -10,7 +10,7 @@ const Header = styled.header`
     justify-content: space-between;
     padding: 24px 60px;
     ${props =>
-        props.profile !== "profile" ? css`
+        props.profile === "profile" ? css`
         > div {
             position: relative;
             > h1 {

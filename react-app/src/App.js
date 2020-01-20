@@ -15,8 +15,8 @@ const App = () => {
         <div>
             <Global page={page} />
             <Route path="/" component={Header} exact />
-            <Route path="/register" component={Register} onLoad={setBackgroundYellow} />
-            <Route path="login" component={Login} onLoad={setBackgroundYellow} />
+            <Route path="/register" component={() => <Register onLoad={setBackgroundYellow} />} />
+            <Route path="/login" component={() => <Login onLoad={setBackgroundYellow} />} />
         </div>
     )
 };

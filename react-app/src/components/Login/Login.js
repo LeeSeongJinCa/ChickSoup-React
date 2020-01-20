@@ -4,7 +4,7 @@ import ChickSoupLogo from '../img/chicksoupLogo.svg';
 
 const Login = ({ onLoad }) => {
     // Change background-color to Yellow
-    window.onload = onLoad;
+    window.onload = () => onLoad();
     return (
         <Styled.Login>
             <div>

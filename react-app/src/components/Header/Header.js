@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import * as Styled from './Styled';
 
 const Header = () => {
-    const [header, setHeader] = useState("profile")
     return (
-        <Styled.Header profile={header}>
+        <Styled.Header>
             <div>
                 <h1>Chick Soup</h1>
                 <i></i>
