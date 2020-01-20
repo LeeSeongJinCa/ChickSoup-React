@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RegisterFirst = () => {
+const RegisterFirst = ({ onClick }) => {
     return (
         <>
             <div className="register-input-box-wrap">
@@ -22,7 +22,9 @@ const RegisterFirst = () => {
                 </label>
                 <span>error3</span>
             </div>
-            <button>회원가입</button>
+            <button onClick={() => {
+                onClick(false);
+            }}>회원가입</button>
             <p>이미 회원이신가요? <a href="/">로그인</a></p>
         </>
     )
