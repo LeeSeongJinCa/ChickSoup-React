@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Login = () => {
+const Email = () => {
     return (
         <>
         </>
     )
 }
 
-export default Login;
+export default Email;
