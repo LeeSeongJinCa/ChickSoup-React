@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Login = () => {
+const ChattingRoom = () => {
     return (
         <>
         </>
     )
 }
 
-export default Login;
+export default ChattingRoom;
