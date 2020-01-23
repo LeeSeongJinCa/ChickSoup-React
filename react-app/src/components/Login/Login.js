@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Styled from './Styled';
 import ChickSoupLogo from '../img/chicksoupLogo.svg';
 
-const Login = ({ onLoad }) => {
-    // Change background-color to Yellow
-    window.onload = () => onLoad();
+const Login = ({ onLoadAuth }) => {
+    useEffect(() => {
+        onLoadAuth(true); // Change background-color to Yellow
+    });
     return (
         <Styled.Login>
             <div>

@@ -1,24 +1,72 @@
-import React, { useState } from 'react';
-import { Route } from 'react-router-dom'
-import Global from './Styled';
-import Register from './components/Register/Register';
-import Login from './components/Login/Login';
-import Header from './components/Header/Header';
+import React, { useState, useEffect } from 'react';
+import { Route, withRouter, Switch } from 'react-router-dom'
+import * as components from './AppComponents';
 
-const App = () => {
+const App = ({ location }) => {
     const [page, setPage] = useState(false);
-    const setBackgroundYellow = () => {
-        setPage(true);
+    const [headerInProfile, setHeaderInProfile] = useState(false);
+    const authPage = (how) => {
+        setPage(how);
     };
-
+    const profilePage = (how) => {
+        setHeaderInProfile(how);
+    };
+    useEffect(() => {
+        if (location.pathname === "/") {
+            authPage(false);
+        }
+        if (location.pathname.split("/")[1] === "profile") {
+            setHeaderInProfile(true);
+        } else {
+            setHeaderInProfile(false);
+        }
+    });
     return (
-        <div>
-            <Global page={page} />
-            <Route path="/" component={Header} exact />
-            <Route path="/register" component={() => <Register onLoad={setBackgroundYellow} />} />
-            <Route path="/login" component={() => <Login onLoad={setBackgroundYellow} />} />
-        </div>
+        <>
+            <components.Global page={page} />
+            <Route
+                path="/"
+                component={() => 
+                    <components.Header 
+                        onLoadAuth={authPage} 
+                        onLoadProfile={headerInProfile}
+                    />}
+                exact={page}
+            />
+            <Route
+                path="/register"
+                component={() => 
+                    <components.Register 
+                        onLoadAuth={authPage} 
+                    />}
+            />
+            <Route
+                path="/login"
+                component={() => 
+                    <components.Login 
+                        onLoadAuth={authPage} 
+                    />}
+            />
+            <Switch>
+                <Route
+                    path="/profile/:name"
+                    component={() =>
+                        <components.Profile
+                            onLoadAuth={authPage}
+                            onLoadProfile={profilePage}
+                        />}
+                />
+                <Route
+                    path="/profile"
+                    component={() =>
+                        <components.Profile
+                            onLoadAuth={authPage}
+                            onLoadProfile={profilePage}
+                        />}
+                />
+            </Switch>
+        </>
     )
 };
 
-export default App;
+export default withRouter(App);

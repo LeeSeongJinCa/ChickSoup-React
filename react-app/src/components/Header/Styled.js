@@ -10,94 +10,102 @@ const Header = styled.header`
     justify-content: space-between;
     padding: 24px 60px;
     ${props =>
-        props.profile === "profile" ? css`
-        > div {
-            position: relative;
-            > h1 {
-                font-size: 22px;
-                letter-spacing: -1.5px;
+        props.profile === "true" ? css`
+    > div {
+        position: relative;
+        > h1 {
+            font-size: 22px;
+            letter-spacing: -1.5px;
+            > a {
+                color: white;
+            }
+        }
+        > i {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 48px;
+            height: 32px;
+            margin-top: 24px;
+            background-image: url(${leftArrow});
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+    > ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        > li {
+            margin-left: 24px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            > a {
                 color: white;
             }
             > i {
                 position: absolute;
-                left: 0;
-                top: 100%;
-                width: 48px;
-                height: 32px;
-                margin-top: 24px;
-                background-image: url(${leftArrow});
+                transform: translateY(-50%);
+                width: 20px;
+                height: 20px;
+                background-image: url(${setting});
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: contain;
             }
         }
-        > ul {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            > li {
-                margin-left: 24px;
-                font-size: 14px;
-                font-weight: bold;
-                color: white;
-                cursor: pointer;
-                > i {
-                    position: absolute;
-                    transform: translateY(-50%);
-                    width: 20px;
-                    height: 20px;
-                    background-image: url(${setting});
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                }
+    }`
+            : css`
+    background-color: white;
+    > div {
+        position: relative;
+        > h1 {
+            font-size: 22px;
+            letter-spacing: -1.5px;
+            > a {
+                color: #1E1E1E;
             }
-        }`
-    : css`
-        background-color: white;
-        > div {
+        }
+        > i {
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 48px;
+            height: 32px;
+            margin-top: 24px;
+            background-image: url(${leftArrowBrown});
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+    > ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        > li {
             position: relative;
-            > h1 {
-                font-size: 22px;
-                letter-spacing: -1.5px;
-                color: black;
+            margin-left: 24px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            > a {
+                color: #1E1E1E;
             }
             > i {
                 position: absolute;
-                left: 0;
-                top: 100%;
-                width: 48px;
-                height: 32px;
-                margin-top: 24px;
-                background-image: url(${leftArrowBrown});
+                transform: translateY(-50%);
+                width: 20px;
+                height: 20px;
+                background-image: url(${settingBlack});
                 background-position: center;
                 background-repeat: no-repeat;
                 background-size: contain;
             }
         }
-        > ul {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            > li {
-                position: relative;
-                margin-left: 24px;
-                font-size: 14px;
-                font-weight: bold;
-                color: black;
-                cursor: pointer;
-                > i {
-                    position: absolute;
-                    transform: translateY(-50%);
-                    width: 20px;
-                    height: 20px;
-                    background-image: url(${settingBlack});
-                    background-position: center;
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                }
-            }
-        }`
+    }`
     }
 `;
 
