@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import StyledLink from '../Common/StyledLink';
 import * as Styled from './Styled';
 
