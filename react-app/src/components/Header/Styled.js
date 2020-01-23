@@ -51,13 +51,14 @@ const Header = styled.header`
     ${props =>
         props.profile === "true" ? css`
     a { color: white; }
-    > div > i { background-image: url(${leftArrow}); }
-    > ul > li > i { background-image: url(${setting}); }`
+    i { background-image: url(${leftArrow}); }
+    img { width: 20px; }`
             : css`
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
     background-color: white;
     a { color: #1E1E1E; }
     > div > i { ackground-image: url(${leftArrowBrown}); }
-    > ul > li > i { background-image: url(${settingBlack}); }`
+    > ul > li img { width: 20px; }`
     }`;
 
 export { Header };

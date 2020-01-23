@@ -1,6 +1,8 @@
 import React from 'react';
 import StyledLink from '../Common/StyledLink';
 import * as Styled from './Styled';
+import setting from '../img/setting.svg';
+import settingBlack from '../img/settingBlack.svg';
 
 const Header = ({ onLoadAuth, onLoadProfile }) => {
     const nowAuthPage = () => onLoadAuth(true);
@@ -25,8 +27,9 @@ const Header = ({ onLoadAuth, onLoadProfile }) => {
                 </li>
                 <li
                     onClick={notAuthPage}
-                ><StyledLink to="/profile">setting, profile</StyledLink>
-                    <i></i>
+                ><StyledLink to="/setting">
+                        <img src={onLoadProfile ? setting : settingBlack} alt="setting" />
+                    </StyledLink>
                 </li>
             </ul>
         </Styled.Header>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom'
 import * as components from './AppComponents';
+import Setting from './components/Setting/Setting';
 
 const App = ({ location }) => {
     const [page, setPage] = useState(false);
@@ -24,6 +25,7 @@ const App = ({ location }) => {
     return (
         <>
             <components.Global page={page} />
+            {/* // ! root */}
             <Route
                 path="/"
                 component={() => 
@@ -33,6 +35,7 @@ const App = ({ location }) => {
                     />}
                 exact={page}
             />
+            {/* // ! register */}
             <Route
                 path="/register"
                 component={() => 
@@ -40,6 +43,7 @@ const App = ({ location }) => {
                         onLoadAuth={authPage} 
                     />}
             />
+            {/* // ! login */}
             <Route
                 path="/login"
                 component={() => 
@@ -47,6 +51,7 @@ const App = ({ location }) => {
                         onLoadAuth={authPage} 
                     />}
             />
+            {/* // ! profile */}
             <Switch>
                 <Route
                     path="/profile/:name"
@@ -65,6 +70,14 @@ const App = ({ location }) => {
                         />}
                 />
             </Switch>
+            {/* // ! setting */}
+            <Route 
+                path="/setting"
+                component={() => 
+                    <components.Setting 
+                        onLoadAuth={authPage}
+                    />}
+            />
         </>
     )
 };
