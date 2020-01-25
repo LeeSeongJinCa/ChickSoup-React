@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom'
 import * as components from './AppComponents';
-import Setting from './components/Setting/Setting';
 
 const App = ({ location }) => {
     const [page, setPage] = useState(false);
     const [headerInProfile, setHeaderInProfile] = useState(false);
-    const authPage = (how) => {
-        setPage(how);
-    };
-    const profilePage = (how) => {
-        setHeaderInProfile(how);
-    };
+    const [id, setId] = useState("dkqjwl52");
+    const authPage = (how) => setPage(how);
+    const profilePage = (how) => setHeaderInProfile(how);
     useEffect(() => {
         if (location.pathname === "/") {
             authPage(false);
@@ -28,9 +24,9 @@ const App = ({ location }) => {
             {/* // ! root */}
             <Route
                 path="/"
-                component={() => 
-                    <components.Header 
-                        onLoadAuth={authPage} 
+                component={() =>
+                    <components.Header
+                        onLoadAuth={authPage}
                         onLoadProfile={headerInProfile}
                     />}
                 exact={page}
@@ -38,17 +34,17 @@ const App = ({ location }) => {
             {/* // ! register */}
             <Route
                 path="/register"
-                component={() => 
-                    <components.Register 
-                        onLoadAuth={authPage} 
+                component={() =>
+                    <components.Register
+                        onLoadAuth={authPage}
                     />}
             />
             {/* // ! login */}
             <Route
                 path="/login"
-                component={() => 
-                    <components.Login 
-                        onLoadAuth={authPage} 
+                component={() =>
+                    <components.Login
+                        onLoadAuth={authPage}
                     />}
             />
             {/* // ! profile */}
@@ -71,11 +67,12 @@ const App = ({ location }) => {
                 />
             </Switch>
             {/* // ! setting */}
-            <Route 
+            <Route
                 path="/setting"
-                component={() => 
-                    <components.Setting 
+                component={() =>
+                    <components.Setting
                         onLoadAuth={authPage}
+                        userId={id}
                     />}
             />
         </>

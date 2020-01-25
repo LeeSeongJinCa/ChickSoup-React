@@ -1,12 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import * as Styled from './Styled';
 import friendControl from '../img/friendListControl.svg';
 import profileYellow from '../img/profileYellow.svg';
 import logout from '../img/logout.svg';
 import id from '../img/id.svg';
 import StyledLink from '../Common/StyledLink';
+import SettingId from './SettingId';
 
-const Setting = ({ onLoadAuth }) => {
+const reducer = (state, action) => {
+    switch (action.type) {
+        case "showId":
+            return { ...state, reducerIdToggle: true, }
+        case "hideId":
+            return { ...state, reducerIdToggle: false, }
+        default:
+            return state;
+    }
+}
+
+const Setting = ({ onLoadAuth, userId }) => {
+    const [state, dispatch] = useReducer(reducer, {
+        reducerIdToggle: false,
+        reducerUserId: userId,
+    });
+    const { reducerIdToggle, reducerUserId } = state;
+    const showId = () => dispatch({ type: "showId" });
+    const hideId = () => dispatch({ type: "hideId" });
     useEffect(() => {
         onLoadAuth(false);
     });
@@ -28,7 +47,7 @@ const Setting = ({ onLoadAuth }) => {
                             <p>차단/숨김 목록 관리</p>
                         </div>
                     </StyledLink>
-                    <div>
+                    <div onClick={showId}>
                         <img src={id} alt="check-id" />
                         <p>ID 확인</p>
                     </div>
@@ -39,6 +58,7 @@ const Setting = ({ onLoadAuth }) => {
                         </div>
                     </StyledLink>
                 </section>
+                {reducerIdToggle && <SettingId reducerUserId={reducerUserId} hideId={hideId} />}
             </div>
         </Styled.Setting>
     )

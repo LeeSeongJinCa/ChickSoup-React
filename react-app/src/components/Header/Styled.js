@@ -1,6 +1,4 @@
 import styled, { css } from 'styled-components';
-import setting from '../img/setting.svg';
-import settingBlack from '../img/settingBlack.svg';
 import leftArrow from '../img/leftArrow.svg';
 import leftArrowBrown from '../img/leftArrowBrown.svg';
 

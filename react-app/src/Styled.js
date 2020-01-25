@@ -33,7 +33,6 @@ const Global = createGlobalStyle`
         css`
             background-color: #FEE100;
         `};
-        overflow: hidden;
     }
     ol, ul {
         list-style: none;
