@@ -29,10 +29,10 @@ const Global = createGlobalStyle`
     body {
         line-height: 1;
         ${props =>
-            props.page &&
-            css`
-                background-color: #FEE100;
-            `};
+        props.page &&
+        css`
+            background-color: #FEE100;
+        `};
     }
     ol, ul {
         list-style: none;
