@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as Styled from './Styled';
 import RegisterFirst from './RegisterFirst';
 import RegisterSecond from './RegisterSecond';
 
-const Register = ({ onLoad }) => {
-    // Change background-color to Yellow
-    window.onload = onLoad;
+const Register = ({ onLoadAuth }) => {
+    useEffect(() => {
+        onLoadAuth(true); // Change background-color to Yellow
+    });
     const [next, setNext] = useState(true);
     const movePage = (bool) => {
         setNext(bool);
