@@ -28,7 +28,8 @@ const App = ({ location }) => {
                     <components.Header
                         onLoadAuth={authPage}
                         onLoadProfile={headerInProfile}
-                    />}
+                    />
+                }
                 exact={page}
             />
             {/* // ! register */}
@@ -37,7 +38,8 @@ const App = ({ location }) => {
                 component={() =>
                     <components.Register
                         onLoadAuth={authPage}
-                    />}
+                    />
+                }
             />
             {/* // ! login */}
             <Route
@@ -45,7 +47,8 @@ const App = ({ location }) => {
                 component={() =>
                     <components.Login
                         onLoadAuth={authPage}
-                    />}
+                    />
+                }
             />
             {/* // ! profile */}
             <Switch>
@@ -55,7 +58,8 @@ const App = ({ location }) => {
                         <components.Profile
                             onLoadAuth={authPage}
                             onLoadProfile={profilePage}
-                        />}
+                        />
+                    }
                 />
                 <Route
                     path="/profile"
@@ -63,7 +67,8 @@ const App = ({ location }) => {
                         <components.Profile
                             onLoadAuth={authPage}
                             onLoadProfile={profilePage}
-                        />}
+                        />
+                    }
                 />
             </Switch>
             {/* // ! setting */}
@@ -73,7 +78,16 @@ const App = ({ location }) => {
                     <components.Setting
                         onLoadAuth={authPage}
                         userId={id}
-                    />}
+                    />
+                }
+            />
+            <Route 
+                path="/friendlist"
+                component={() => 
+                    <components.FriendList 
+                        onLoadAuth={authPage}
+                    />
+                }
             />
         </>
     )
