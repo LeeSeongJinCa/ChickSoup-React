@@ -89,6 +89,14 @@ const App = ({ location }) => {
                     />
                 }
             />
+            <Route 
+                path="/hideblockfriendlist"
+                component={() => 
+                    <components.HideBlockFriendList
+                        onLoadAuth={authPage}
+                    />
+                }
+            />
         </>
     )
 };

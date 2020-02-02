@@ -8,6 +8,7 @@ import Chatting from './components/Chatting/Chatting';
 import FriendList from './components/FriendList/FriendList';
 import SearchFriend from './components/SearchFriend/SearchFriend';
 import ChattingRoom from './components/ChattingRoom/ChattingRoom';
+import HideBlockFriendList from './components/FriendList/HideBlockFriendList';
 
 export { 
     Global, 
@@ -19,5 +20,6 @@ export {
     FriendList, 
     SearchFriend, 
     Chatting, 
-    ChattingRoom 
+    ChattingRoom,
+    HideBlockFriendList,
 };

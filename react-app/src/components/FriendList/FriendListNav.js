@@ -2,11 +2,11 @@ import React from 'react';
 import star from '../img/star.svg';
 import addFriend from '../img/addFriend.svg';
 import request from '../img/question.png';
-import { FriendListNav } from './Styled';
+import * as Styled from './Styled';
 
 const FriendListNav = () => {
     return (
-        <FriendListNav>
+        <Styled.FriendListNav>
             <div>
                 <img src={star} alt="bookmark" />
                 <span>즐겨찾기</span>
@@ -19,7 +19,7 @@ const FriendListNav = () => {
                 <img src={request} alt="request" />
                 <span>친구 요청</span>
             </div>
-        </FriendListNav>
+        </Styled.FriendListNav>
     )
 };
 

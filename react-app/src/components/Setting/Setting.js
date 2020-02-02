@@ -41,7 +41,7 @@ const Setting = ({ onLoadAuth, userId }) => {
                             <p>프로필 변경</p>
                         </div>
                     </StyledLink>
-                    <StyledLink to="/friendList">
+                    <StyledLink to="/hideblockfriendlist">
                         <div>
                             <img src={friendControl} alt="friend-control" />
                             <p>차단/숨김 목록 관리</p>

@@ -3,14 +3,6 @@ import styled from 'styled-components';
 const FriendList = styled.main`
     width: 1220px;
     margin: 0 auto;
-    > div {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 32px 0 24px;
-        border-bottom: 2px solid #FAE100;
-        > h2 { font-size: 28px; }
-    }
     > section {
         > div.myprofile > div {
             border-bottom: 2px solid #FEE100;
@@ -19,6 +11,19 @@ const FriendList = styled.main`
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
+        }
+    }
+`;
+
+const HideBlockFriendList = styled.div`
+    width: 1220px;
+    margin: 0 auto;
+    > section {
+        div.otherprofile {
+            display: flex;
+            > div {
+                flex: 1;
+            }
         }
     }
 `;
@@ -62,7 +67,7 @@ const ProfilePreview = styled.div`
         right: 0;
         padding: 12px 8px;
         border-radius: 8px;
-        transform: translate(25%, 5%);
+        transform: translate(0, 5%);
         background-color: rgba(30, 30, 30, 0.8);
         color: white;
         z-index: 1;
@@ -107,25 +112,33 @@ const FriendListNav = styled.nav`
 
 const FriendListSearchBox = styled.div`
     display: flex;
-    height: 32px;
-    padding: 0 4px;
-    border-radius: 16px;
-    background-color: #F1F1F1;
-    > img {
-        align-self: center;
-        height: 50%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 32px 0 24px;
+    border-bottom: 2px solid #FAE100;
+    > h2 { font-size: 28px; }
+    > div {
+        display: flex;
+        height: 32px;
         padding: 0 4px;
-        cursor: pointer;
-    }
-    > input {
-        width: 240px;
-        height: inherit;
-        padding: 0 4px;
-        border: 0;
         border-radius: 16px;
-        outline: none;
         background-color: #F1F1F1;
+        > img {
+            align-self: center;
+            height: 50%;
+            padding: 0 4px;
+            cursor: pointer;
+        }
+        > input {
+            width: 240px;
+            height: inherit;
+            padding: 0 4px;
+            border: 0;
+            border-radius: 16px;
+            outline: none;
+            background-color: #F1F1F1;
+        }
     }
 `;
 
-export { FriendList, ProfilePreview, FriendListNav, FriendListSearchBox };
+export { FriendList, ProfilePreview, FriendListNav, FriendListSearchBox, HideBlockFriendList };
