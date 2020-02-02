@@ -10,47 +10,8 @@ const FriendList = styled.main`
         padding: 32px 0 24px;
         border-bottom: 2px solid #FAE100;
         > h2 { font-size: 28px; }
-        > div {
-            display: flex;
-            height: 32px;
-            padding: 0 4px;
-            border-radius: 16px;
-            background-color: #F1F1F1;
-            > img {
-                align-self: center;
-                height: 50%;
-                padding: 0 4px;
-                cursor: pointer;
-            }
-            > input {
-                width: 240px;
-                height: inherit;
-                padding: 0 4px;
-                border: 0;
-                border-radius: 16px;
-                outline: none;
-                background-color: #F1F1F1;
-            }
-        }
     }
     > section {
-        > nav {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            > div {
-                display: flex;
-                align-items: center;
-                margin: 8px 4px;
-                cursor: pointer;
-                > img {
-                    width: 16px;
-                    height: 16px;
-                    margin: 0 4px;
-                }
-                > span { font-size: 12px; }
-            }
-        }
         > div.myprofile > div {
             border-bottom: 2px solid #FEE100;
         }
@@ -126,4 +87,45 @@ const ProfilePreview = styled.div`
     }
 `;
 
-export { FriendList, ProfilePreview };
+const FriendListNav = styled.nav`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    > div {
+        display: flex;
+        align-items: center;
+        margin: 8px 4px;
+        cursor: pointer;
+        > img {
+            width: 16px;
+            height: 16px;
+            margin: 0 4px;
+        }
+        > span { font-size: 12px; }
+    }
+`;
+
+const FriendListSearchBox = styled.div`
+    display: flex;
+    height: 32px;
+    padding: 0 4px;
+    border-radius: 16px;
+    background-color: #F1F1F1;
+    > img {
+        align-self: center;
+        height: 50%;
+        padding: 0 4px;
+        cursor: pointer;
+    }
+    > input {
+        width: 240px;
+        height: inherit;
+        padding: 0 4px;
+        border: 0;
+        border-radius: 16px;
+        outline: none;
+        background-color: #F1F1F1;
+    }
+`;
+
+export { FriendList, ProfilePreview, FriendListNav, FriendListSearchBox };

@@ -10,9 +10,8 @@ const Header = ({ onLoadAuth, onLoadProfile }) => {
     return (
         <Styled.Header profile={onLoadProfile.toString()}>
             <div>
-                <h1
-                    onClick={notAuthPage}
-                ><StyledLink to="/friendlist">Chick Soup</StyledLink>
+                <h1 onClick={notAuthPage}>
+                    <StyledLink to="/friendlist">Chick Soup</StyledLink>
                 </h1>
                 <i></i>
             </div>

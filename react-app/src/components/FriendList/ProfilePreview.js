@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Styled from './Styled';
+import { ProfilePreview } from './Styled';
 import detail from '../img/details.svg';
 import hideFriend from '../img/hideFriend.svg';
 import blockFriend from '../img/blockFriend.svg';
@@ -16,7 +16,7 @@ const ProfilePreview = ({ my, data, onClickShowDetail, detailNum, tagNum }) => {
         "bookmark": "첫 번째 친구의 즐겨찾기 상태" <number : 0 or 1>
     }*/
     return (
-        <Styled.ProfilePreview className="profile-preview">
+        <ProfilePreview className="profile-preview">
             <div className="profile-preview--img">
                 <img src={`http://chicksoup.s3.ap-northeast-2.amazonaws.com/media/image/user/profile/${data.id}.png`} alt="profile" />
             </div>
@@ -51,7 +51,7 @@ const ProfilePreview = ({ my, data, onClickShowDetail, detailNum, tagNum }) => {
                     </ul>
                 </div>
             }
-        </Styled.ProfilePreview>
+        </ProfilePreview>
     )
 };
 

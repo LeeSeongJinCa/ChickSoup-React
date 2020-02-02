@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import * as Styled from './Styled';
-import search from '../img/search.svg';
-import star from '../img/star.svg';
-import addFriend from '../img/addFriend.svg';
-import request from '../img/question.png';
 import ProfilePreview from './ProfilePreview';
+import FriendListNav from './FriendListNav';
+import FriendListSearchBox from './FriendListSearchBox';
 
 const friendsData = [
     {
@@ -68,28 +66,9 @@ const FriendList = ({ onLoadAuth }) => {
     }, [detail]);
     return (
         <Styled.FriendList>
-            <div>
-                <h2>내 친구 보기</h2>
-                <div>
-                    <img src={search} alt="search" />
-                    <input type="text" placeholder="친구 검색" />
-                </div>
-            </div>
+            <FriendListSearchBox />
             <section>
-                <nav>
-                    <div>
-                        <img src={star} alt="bookmark" />
-                        <span>즐겨찾기</span>
-                    </div>
-                    <div>
-                        <img src={addFriend} alt="addFriend" />
-                        <span>친구 추가</span>
-                    </div>
-                    <div>
-                        <img src={request} alt="request" />
-                        <span>친구 요청</span>
-                    </div>
-                </nav>
+                <FriendListNav />
                 <div className="myprofile">
                     <h3>내 프로필</h3>
                     <ProfilePreview
