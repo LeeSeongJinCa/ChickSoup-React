@@ -3,6 +3,7 @@ import * as Styled from './Styled';
 import SearchBox from '../FriendList/SearchBox';
 import ListNav from '../FriendList/ListNav';
 import newChat from '../img/newChatting.svg';
+import Room from './Room';
 
 const roomData = [
     {
@@ -43,22 +44,6 @@ const roomData = [
     }, 
 ];
 
-const makeRooms = () => {
-    const rooms = roomData.map((room, i) => {
-        return (
-            <li key={i}>
-                <div>
-                    <img src={`http://chicksoup.s3.ap-northeast-2.amazonaws.com/media/image/user/profile/${room.rooms[0]}.png`} alt="dms" />
-                    {room.hurry && <span></span>}
-                </div>
-                <h2>{room.title}</h2>
-                <p>{room.people}</p>
-            </li>
-        )
-    });
-    return rooms;
-};
-
 const ChattingRoom = ({ onLoadAuth }) => {
     useEffect(() => {
         onLoadAuth();
@@ -69,7 +54,17 @@ const ChattingRoom = ({ onLoadAuth }) => {
             <ListNav />
             <section>
                 <ul>
-                    {makeRooms()}
+                    {roomData.map((data, i) => {
+                        return (
+                            <Room 
+                                key={i}
+                                id={data.room[0]} 
+                                hurry={data.hurry}
+                                title={data.title}
+                                people={data.people}
+                            />
+                        )
+                    })}
                     <li className="new-chat">
                         <img src={newChat} alt="newChat" />
                         <p>새 채팅</p>
