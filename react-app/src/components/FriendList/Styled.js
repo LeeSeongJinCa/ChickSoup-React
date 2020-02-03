@@ -96,7 +96,11 @@ const FriendListNav = styled.nav`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    > div {
+    a {
+        text-decoration: none;
+        color: #1A1A1A;
+    }
+    div {
         display: flex;
         align-items: center;
         margin: 8px 4px;

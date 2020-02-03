@@ -81,6 +81,7 @@ const App = ({ location }) => {
                     />
                 }
             />
+            {/* // ! friendlist */}
             <Route 
                 path="/friendlist"
                 component={() => 
@@ -97,6 +98,16 @@ const App = ({ location }) => {
                     />
                 }
             />
+            {/* // ! searchfriend */}
+            <Route
+                path="/searchfriend"
+                component={() => 
+                    <components.SearchFriend
+                        onLoadAuth={authPage}
+                    />
+                }
+            />
+            {/* // ! chattingroom */}
         </>
     )
 };
