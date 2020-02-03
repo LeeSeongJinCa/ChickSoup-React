@@ -1,8 +1,8 @@
 import React, { useEffect, useReducer } from 'react';
 import * as Styled from './Styled';
 import ProfilePreview from './ProfilePreview';
-import FriendListNav from './FriendListNav';
-import FriendListSearchBox from './FriendListSearchBox';
+import FriendListNav from './ListNav';
+import SearchBox from './SearchBox';
 
 const friendsData = [
     {
@@ -102,7 +102,7 @@ const HideBlockFriendList = ({ onLoadAuth }) => {
     }, []);
     return (
         <Styled.HideBlockFriendList>
-            <FriendListSearchBox />
+            <SearchBox title={"차단/숨김 친구 보기"} placeholder={"검색"} />
             <section>
                 <FriendListNav />
                 <div className="otherprofile">

@@ -108,6 +108,14 @@ const App = ({ location }) => {
                 }
             />
             {/* // ! chattingroom */}
+            <Route
+                path="/chattingroom"
+                component={() =>
+                    <components.ChattingRoom
+                        onLoadAuth={authPage}
+                    />
+                }
+            />
         </>
     )
 };

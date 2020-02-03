@@ -1,8 +1,8 @@
 import React, { useEffect, useReducer } from 'react';
 import * as Styled from './Styled';
 import ProfilePreview from './ProfilePreview';
-import FriendListNav from './FriendListNav';
-import FriendListSearchBox from './FriendListSearchBox';
+import ListNav from './ListNav';
+import SearchBox from './SearchBox';
 
 const friendsData = [
     {
@@ -78,9 +78,9 @@ const FriendList = ({ onLoadAuth }) => {
     }, []);
     return (
         <Styled.FriendList>
-            <FriendListSearchBox />
+            <SearchBox title={"내 친구 보기"} placeholder={"친구 검색"} />
             <section>
-                <FriendListNav />
+                <ListNav />
                 <div className="myprofile">
                     <h3>내 프로필</h3>
                     <ProfilePreview

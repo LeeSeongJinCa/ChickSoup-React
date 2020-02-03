@@ -92,7 +92,7 @@ const ProfilePreview = styled.div`
     }
 `;
 
-const FriendListNav = styled.nav`
+const ListNav = styled.nav`
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -114,7 +114,7 @@ const FriendListNav = styled.nav`
     }
 `;
 
-const FriendListSearchBox = styled.div`
+const SearchBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -145,4 +145,10 @@ const FriendListSearchBox = styled.div`
     }
 `;
 
-export { FriendList, ProfilePreview, FriendListNav, FriendListSearchBox, HideBlockFriendList };
+export { 
+    FriendList, 
+    ProfilePreview, 
+    ListNav, 
+    SearchBox, 
+    HideBlockFriendList 
+};

@@ -5,9 +5,9 @@ import addFriend from '../img/addFriend.svg';
 import request from '../img/question.png';
 import * as Styled from './Styled';
 
-const FriendListNav = () => {
+const ListNav = () => {
     return (
-        <Styled.FriendListNav>
+        <Styled.ListNav>
             <div>
                 <img src={star} alt="bookmark" />
                 <span>즐겨찾기</span>
@@ -24,8 +24,8 @@ const FriendListNav = () => {
                     <span>친구 요청</span>
                 </div>
             </Link>
-        </Styled.FriendListNav>
+        </Styled.ListNav>
     )
 };
 
-export default FriendListNav;
+export default ListNav;
