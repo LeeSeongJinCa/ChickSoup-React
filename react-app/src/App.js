@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom'
 import * as components from './AppComponents';
 
 const App = ({ location }) => {
+    const [id, setId] = useState("test");
     const [page, setPage] = useState(false);
-    const [id, setId] = useState("dkqjwl52");
     const [headerInProfile, setHeaderInProfile] = useState(false);
     
-    const authPage = (how) => setPage(how);
-    const profilePage = (how) => setHeaderInProfile(how);
+    const authPage = useCallback((how) => setPage(how), []);
+    const profilePage = useCallback((how) => setHeaderInProfile(how), []);
     
     useEffect(() => {
         if (location.pathname === "/") {

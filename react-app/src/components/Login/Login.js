@@ -3,9 +3,11 @@ import * as Styled from './Styled';
 import ChickSoupLogo from '../img/chicksoupLogo.svg';
 
 const Login = ({ onLoadAuth }) => {
+    
     useEffect(() => {
         onLoadAuth(true); // Change background-color to Yellow
-    });
+    }, []);
+    
     return (
         <Styled.Login>
             <div>
@@ -25,7 +27,6 @@ const Login = ({ onLoadAuth }) => {
             </div>
         </Styled.Login>
     )
-
-}
+};
 
 export default Login;
