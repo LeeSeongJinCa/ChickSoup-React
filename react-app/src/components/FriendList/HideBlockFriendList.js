@@ -89,7 +89,7 @@ const HideBlockFriendList = ({ onLoadAuth }) => {
         <Styled.HideBlockFriendList>
             <SearchBox title={"차단/숨김 친구 보기"} placeholder={"검색"} />
             <section>
-                <FriendListNav />
+                <ListNav />
                 <div className="otherprofile">
                     <div>
                         <h1>차단</h1>

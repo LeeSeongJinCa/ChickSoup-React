@@ -1,6 +1,6 @@
 import React from 'react';
-import chatting from '../img/chatting.svg';
-import setting from "../img/setting.svg";
+import chatting from '../../img/chatting.svg';
+import setting from "../../img/setting.svg";
 
 const ProfileNav = ({ onClick }) => {
     return (

@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 import * as Styled from '../Styled';
-import detail from '../img/details.svg';
-import unBlock from '../img/unBlock.png';
-import hideFriend from '../img/hideFriend.svg';
-import blockFriend from '../img/blockFriend.svg';
-import removeFriend from '../img/removeFriend.svg';
-import bookmarkFriend from '../img/bookmarkFriend.svg';
+import detail from '../../img/details.svg';
+import unBlock from '../../img/unBlock.png';
+import hideFriend from '../../img/hideFriend.svg';
+import blockFriend from '../../img/blockFriend.svg';
+import removeFriend from '../../img/removeFriend.svg';
+import bookmarkFriend from '../../img/bookmarkFriend.svg';
 
 const ProfilePreview = ({ my, data, detailNum, tagNum, onClickDetail }) => {
     const detailFilter = useCallback((e) => {

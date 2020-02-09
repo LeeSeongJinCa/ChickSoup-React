@@ -1,5 +1,5 @@
 import React from 'react';
-import defaultCover from '../img/defaultProfileImage.png';
+import defaultCover from '../../img/defaultProfileImage.png';
 
 const ProfileCover = () => {
     return (

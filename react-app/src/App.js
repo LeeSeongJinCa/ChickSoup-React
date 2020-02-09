@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom'
-import { Chatting, ChattingRoom, FriendList, Header, Login, Profile, Register, SearchFriend, Setting } from './components';
+import { Chatting, ChattingRoom, FriendList, Header, Login, Profile, Register, SearchFriend, Setting, HideBlockFriendList } from './components';
 import Global from './Styled';
 
 const App = ({ location }) => {

@@ -7,6 +7,6 @@ const Chatting = () => {
             
         </Styled.Chatting>
     )
-}
+};
 
 export default Chatting;

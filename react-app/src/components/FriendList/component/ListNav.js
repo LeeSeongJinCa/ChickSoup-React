@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import * as Styled from '../Styled';
-import star from '../img/star.svg';
-import addFriend from '../img/addFriend.svg';
-import request from '../img/question.png';
+import star from '../../img/star.svg';
+import request from '../../img/question.png';
+import addFriend from '../../img/addFriend.svg';
 
 const ListNav = () => {
     return (

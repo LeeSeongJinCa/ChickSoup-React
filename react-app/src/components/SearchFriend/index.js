@@ -1,1 +1,1 @@
-export { deafult as SearchFriend } from './SearchFriend';
+export { default as SearchFriend } from './SearchFriend';
