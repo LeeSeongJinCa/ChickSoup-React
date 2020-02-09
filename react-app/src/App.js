@@ -4,10 +4,12 @@ import * as components from './AppComponents';
 
 const App = ({ location }) => {
     const [page, setPage] = useState(false);
-    const [headerInProfile, setHeaderInProfile] = useState(false);
     const [id, setId] = useState("dkqjwl52");
+    const [headerInProfile, setHeaderInProfile] = useState(false);
+    
     const authPage = (how) => setPage(how);
     const profilePage = (how) => setHeaderInProfile(how);
+    
     useEffect(() => {
         if (location.pathname === "/") {
             authPage(false);
@@ -17,14 +19,15 @@ const App = ({ location }) => {
         } else {
             setHeaderInProfile(false);
         }
-    });
+    }, [location]);
+    
     return (
         <>
             <components.Global page={page} />
             {/* // ! root */}
             <Route
                 path="/"
-                component={() =>
+                render={() =>
                     <components.Header
                         onLoadAuth={authPage}
                         onLoadProfile={headerInProfile}
@@ -35,7 +38,7 @@ const App = ({ location }) => {
             {/* // ! register */}
             <Route
                 path="/register"
-                component={() =>
+                render={() =>
                     <components.Register
                         onLoadAuth={authPage}
                     />
@@ -44,7 +47,7 @@ const App = ({ location }) => {
             {/* // ! login */}
             <Route
                 path="/login"
-                component={() =>
+                render={() =>
                     <components.Login
                         onLoadAuth={authPage}
                     />
@@ -54,7 +57,7 @@ const App = ({ location }) => {
             <Switch>
                 <Route
                     path="/profile/:name"
-                    component={() =>
+                    render={() =>
                         <components.Profile
                             onLoadAuth={authPage}
                             onLoadProfile={profilePage}
@@ -63,7 +66,7 @@ const App = ({ location }) => {
                 />
                 <Route
                     path="/profile"
-                    component={() =>
+                    render={() =>
                         <components.Profile
                             onLoadAuth={authPage}
                             onLoadProfile={profilePage}
@@ -74,17 +77,53 @@ const App = ({ location }) => {
             {/* // ! setting */}
             <Route
                 path="/setting"
-                component={() =>
+                render={() =>
                     <components.Setting
                         onLoadAuth={authPage}
                         userId={id}
                     />
                 }
             />
+            {/* // ! friendlist */}
             <Route 
                 path="/friendlist"
-                component={() => 
+                render={() => 
                     <components.FriendList 
+                        onLoadAuth={authPage}
+                    />
+                }
+            />
+            <Route 
+                path="/hideblockfriendlist"
+                render={() => 
+                    <components.HideBlockFriendList
+                        onLoadAuth={authPage}
+                    />
+                }
+            />
+            {/* // ! searchfriend */}
+            <Route
+                path="/searchfriend"
+                render={() => 
+                    <components.SearchFriend
+                        onLoadAuth={authPage}
+                    />
+                }
+            />
+            {/* // ! chattingroom */}
+            <Route
+                path="/chattingroom"
+                render={() =>
+                    <components.ChattingRoom
+                        onLoadAuth={authPage}
+                    />
+                }
+            />
+            {/* // ! chatting */}
+            <Route
+                path="/chatting"
+                render={() =>
+                    <components.Chatting
                         onLoadAuth={authPage}
                     />
                 }

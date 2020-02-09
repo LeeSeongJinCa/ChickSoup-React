@@ -1,53 +1,60 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import * as Styled from './Styled';
-import search from '../img/search.svg';
-import star from '../img/star.svg';
-import addFriend from '../img/addFriend.svg';
-import request from '../img/question.png';
 import ProfilePreview from './ProfilePreview';
+import ListNav from './ListNav';
+import SearchBox from './SearchBox';
 
 const friendsData = [
     {
         "id": "1",
-        "nickname": "첫 번째 친구의 닉네임",
+        "nickname": "1 번째 친구의 닉네임",
         "status_message": "첫 번째 친구의 상태 메세지",
         "mute": 0,
         "hidden": 0,
         "bookmark": 0,
     }, {
         "id": "2",
-        "nickname": "첫 번째 친구의 닉네임",
+        "nickname": "2 번째 친구의 닉네임",
         "status_message": "첫 번째 친구의 상태 메세지",
         "mute": 0,
         "hidden": 0,
         "bookmark": 0,
     }, {
         "id": "10",
-        "nickname": "첫 번째 친구의 닉네임",
+        "nickname": "10 번째 친구의 닉네임",
         "status_message": "첫 번째 친구의 상태 메세지",
         "mute": 1,
         "hidden": 0,
         "bookmark": 0,
     }, {
         "id": "13",
-        "nickname": "첫 번째 친구의 닉네임",
+        "nickname": "13 번째 친구의 닉네임",
         "status_message": "첫 번째 친구의 상태 메세지",
         "mute": 0,
         "hidden": 1,
         "bookmark": 0,
-    }, 
+    },
 ];
 
-const FriendList = ({ onLoadAuth }) => {
-    const [detail, setDetail] = useState(-1);
-    const onClickShowDetail = (num) => setDetail(num);
-    useEffect(() => {
-        onLoadAuth(false);
-    }, []);
-    const isAbleData = (friend) => {
-        const result = friend.mute || friend.hidden ? false : true;
-        return result;
+const reducer = (state, action) => {
+    switch (action.type) {
+        case "detail":
+            return { detail: +action.num }
+        default: {
+            throw new Error(`unexpected action.type: ${action.type}`);
+        }
     }
+};
+
+const FriendList = ({ onLoadAuth }) => {
+    const [state, dispatch] = useReducer(reducer, {
+        detail: -1,
+    })
+    const { detail } = state;
+    const onClickDetail = (e) => {
+        dispatch({ type: "detail", num: e.target.dataset.num });
+    }
+    const isAbleData = (friend) => friend.mute || friend.hidden ? false : true;
     const getFriendListHtml = () => {
         const friendList = friendsData.filter(isAbleData).map((friend, i) => {
             return (
@@ -56,7 +63,7 @@ const FriendList = ({ onLoadAuth }) => {
                     key={i}
                     detailNum={detail}
                     tagNum={i}
-                    onClickShowDetail={onClickShowDetail}
+                    onClickDetail={onClickDetail}
                 />
             )
         });
@@ -66,30 +73,14 @@ const FriendList = ({ onLoadAuth }) => {
     useEffect(() => {
         FriendListHtml = getFriendListHtml();
     }, [detail]);
+    useEffect(() => {
+        onLoadAuth(false);
+    }, []);
     return (
         <Styled.FriendList>
-            <div>
-                <h2>내 친구 보기</h2>
-                <div>
-                    <img src={search} alt="search" />
-                    <input type="text" placeholder="친구 검색" />
-                </div>
-            </div>
+            <SearchBox title={"내 친구 보기"} placeholder={"친구 검색"} />
             <section>
-                <nav>
-                    <div>
-                        <img src={star} alt="bookmark" />
-                        <span>즐겨찾기</span>
-                    </div>
-                    <div>
-                        <img src={addFriend} alt="addFriend" />
-                        <span>친구 추가</span>
-                    </div>
-                    <div>
-                        <img src={request} alt="request" />
-                        <span>친구 요청</span>
-                    </div>
-                </nav>
+                <ListNav />
                 <div className="myprofile">
                     <h3>내 프로필</h3>
                     <ProfilePreview

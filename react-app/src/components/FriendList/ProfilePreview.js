@@ -5,16 +5,24 @@ import hideFriend from '../img/hideFriend.svg';
 import blockFriend from '../img/blockFriend.svg';
 import removeFriend from '../img/removeFriend.svg';
 import bookmarkFriend from '../img/bookmarkFriend.svg';
+import unBlock from '../img/unBlock.png';
 
-const ProfilePreview = ({ my, data, onClickShowDetail, detailNum, tagNum }) => {
-    /* {
-        "id": "1", <string>
-        "nickname": "첫 번째 친구의 닉네임", <string>
-        "status_message": "첫 번째 친구의 상태 메세지", <string>
-        "mute": "첫 번째 친구의 차단 상태", <number : 0 or 1>
-        "hidden": "첫 번째 친구의 숨김 상태", <number : 0 or 1>
-        "bookmark": "첫 번째 친구의 즐겨찾기 상태" <number : 0 or 1>
-    }*/
+const ProfilePreview = ({ my, data, detailNum, tagNum, onClickDetail }) => {
+    const detailFilter = (e) => {
+        // 기본 디테일 열 때
+        if (detailNum === -1) { e.target.dataset.num = tagNum; onClickDetail(e); console.log(1)}
+        else {
+            // 디테일 열은 것을 닫을 때
+            if (detailNum === tagNum) { e.target.dataset.num = -1; onClickDetail(e); console.log(2)}
+            else {
+                // 두 개의 디테일을 왔다갔다 할 때
+                if (+e.target.dataset.num === -1 && detailNum !== -1) { e.target.dataset.num = tagNum; onClickDetail(e); console.log(3)}
+                // 하나의 디테일이 열려있는 도중 다른 디테일을 열 때
+                else { onClickDetail(e); e.target.dataset.num = -1; console.log(4)}
+            }
+        }
+    };
+
     return (
         <Styled.ProfilePreview className="profile-preview">
             <div className="profile-preview--img">
@@ -25,29 +33,34 @@ const ProfilePreview = ({ my, data, onClickShowDetail, detailNum, tagNum }) => {
                 <p>{data.status_message}</p>
             </div>
             {!my && <img className="profile-preview--more" src={detail} alt="moreDetails"
-                onClick={() => {
-                    detailNum === tagNum ? onClickShowDetail(-1) : onClickShowDetail(tagNum);
-                }}
+                data-num={tagNum}
+                onClick={detailFilter}
             />}
             {(detailNum !== undefined && tagNum !== undefined) && (detailNum === tagNum) &&
                 <div className="profile-preview--detail">
                     <ul>
-                        <li>
-                            <img src={removeFriend} alt="removeFriend" />
-                            <span>삭제하기</span>
-                        </li>
-                        <li>
-                            <img src={blockFriend} alt="blockFriend" />
-                            <span>차단하기</span>
-                        </li>
-                        <li>
-                            <img src={hideFriend} alt="hideFriend" />
-                            <span>숨기기</span>
-                        </li>
-                        <li>
-                            <img src={bookmarkFriend} alt="bookmarkFriend" />
-                            <span>즐겨찾기</span>
-                        </li>
+                        {data.mute || data.hidden ? <li>
+                            <img src={unBlock} alt="unBlock" />
+                            <span>해제하기</span>
+                        </li> :
+                            <>
+                                <li>
+                                    <img src={removeFriend} alt="removeFriend" />
+                                    <span>삭제하기</span>
+                                </li>
+                                <li>
+                                    <img src={blockFriend} alt="blockFriend" />
+                                    <span>차단하기</span>
+                                </li>
+                                <li>
+                                    <img src={hideFriend} alt="hideFriend" />
+                                    <span>숨기기</span>
+                                </li>
+                                <li>
+                                    <img src={bookmarkFriend} alt="bookmarkFriend" />
+                                    <span>즐겨찾기</span>
+                                </li>
+                            </>}
                     </ul>
                 </div>
             }
