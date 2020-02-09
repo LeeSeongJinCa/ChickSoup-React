@@ -1,15 +1,15 @@
 import React from 'react';
 import * as Styled from './Styled';
 
-const Room = ({ id, hurry, title, people }) => {
+const Room = ({ data }) => {
     return (
         <Styled.Room>
             <div>
-                <img src={`http://chicksoup.s3.ap-northeast-2.amazonaws.com/media/image/user/profile/${id}.png`} alt="dms" />
-                {hurry && <span></span>}
+                <img src={`http://chicksoup.s3.ap-northeast-2.amazonaws.com/media/image/user/profile/${data.rooms[0]}.png`} alt="dms" />
+                {data.recent && <span></span>}
             </div>
-            <h2>{title}</h2>
-            <p>{people}</p>
+            <h2>{data.title}</h2>
+            <p>{data.people}</p>
         </Styled.Room>
     )
 };

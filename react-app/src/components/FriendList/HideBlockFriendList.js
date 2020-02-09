@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useCallback, useState } from 'react';
 import * as Styled from './Styled';
 import ProfilePreview from './ProfilePreview';
 import FriendListNav from './ListNav';
@@ -56,46 +56,33 @@ const HideBlockFriendList = ({ onLoadAuth }) => {
         hiddenDetail: -1,
     })
     const { blockDetail, hiddenDetail } = state;
-    const onClickBlockDetail = (e) => dispatch({ type: "block", num: e.target.dataset.num });
-    const onClickHiddenDetail = (e) => dispatch({ type: "hidden", num: e.target.dataset.num });
-    
-    const isBlocked = (friend) => friend.mute ? true : false;
-    const isHidden = (friend) => friend.hidden ? true : false;
-    const getBlockedFriendListHtml = () => {
-        const friendList = friendsData.filter(isBlocked).map((friend, i) => {
+    const [hiddenHtml, setHiddenHtml] = useState([]);
+    const [blockedHtml, setBlockedHtml] = useState([]);
+
+    const isBlocked = useCallback((friend) => friend.mute ? true : false, []);
+    const isHidden = useCallback((friend) => friend.hidden ? true : false, []);
+    const onClickBlockDetail = useCallback((e) => dispatch({ type: "block", num: e.target.dataset.num }), []);
+    const onClickHiddenDetail = useCallback((e) => dispatch({ type: "hidden", num: e.target.dataset.num }), []);
+    const getFriendListHtml = useCallback((filterType, detailType, onClickType) => {
+        const friendList = friendsData.filter(filterType).map((friend, i) => {
             return (
                 <ProfilePreview
                     data={friend}
                     key={i}
                     tagNum={i}
-                    detailNum={blockDetail}
-                    onClickDetail={onClickBlockDetail}
+                    detailNum={detailType}
+                    onClickDetail={onClickType}
                 />
             )
         });
         return friendList;
-    };
-    const getHiddenFriendListHtml = () => {
-        const friendList = friendsData.filter(isHidden).map((friend, i) => {
-            return (
-                <ProfilePreview
-                    data={friend}
-                    key={i}
-                    tagNum={i}
-                    detailNum={hiddenDetail}
-                    onClickDetail={onClickHiddenDetail}
-                />
-            )
-        });
-        return friendList;
-    };
-    let blockedFriendListHtml = getBlockedFriendListHtml();
-    let hiddenFriendListHtml = getHiddenFriendListHtml();
+    }, [friendsData]);
+
     useEffect(() => {
-        blockedFriendListHtml = getBlockedFriendListHtml();
+        setBlockedHtml(getFriendListHtml(isBlocked, blockDetail, onClickBlockDetail));
     }, [blockDetail]);
     useEffect(() => {
-        hiddenFriendListHtml = getHiddenFriendListHtml();
+        setHiddenHtml(getFriendListHtml(isHidden, hiddenDetail, onClickHiddenDetail));
     }, [hiddenDetail]);
     useEffect(() => {
         onLoadAuth(false);
@@ -108,11 +95,11 @@ const HideBlockFriendList = ({ onLoadAuth }) => {
                 <div className="otherprofile">
                     <div>
                         <h1>차단</h1>
-                        {blockedFriendListHtml}
+                        {blockedHtml}
                     </div>
                     <div>
                         <h1>숨김</h1>
-                        {hiddenFriendListHtml}
+                        {hiddenHtml}
                     </div>
                 </div>
             </section>

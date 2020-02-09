@@ -33,6 +33,13 @@ const Global = createGlobalStyle`
         css`
             background-color: #FEE100;
         `};
+        &::-webkit-scrollbar {
+            width: 4px;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 8px;
+            background-color: #FEE100;
+        }
     }
     ol, ul {
         list-style: none;

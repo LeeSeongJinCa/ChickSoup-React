@@ -1,8 +1,8 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useCallback } from 'react';
 import * as Styled from './Styled';
-import ProfilePreview from './ProfilePreview';
 import ListNav from './ListNav';
 import SearchBox from './SearchBox';
+import ProfilePreview from './ProfilePreview';
 
 const friendsData = [
     {
@@ -49,26 +49,28 @@ const reducer = (state, action) => {
 const FriendList = ({ onLoadAuth }) => {
     const [state, dispatch] = useReducer(reducer, {
         detail: -1,
-    })
+    });
     const { detail } = state;
-    const onClickDetail = (e) => {
+
+    const onClickDetail = useCallback((e) => {
         dispatch({ type: "detail", num: e.target.dataset.num });
-    }
-    const isAbleData = (friend) => friend.mute || friend.hidden ? false : true;
-    const getFriendListHtml = () => {
+    }, []);
+    const isAbleData = useCallback((friend) => friend.mute || friend.hidden ? false : true, []);
+    const getFriendListHtml = useCallback(() => {
         const friendList = friendsData.filter(isAbleData).map((friend, i) => {
             return (
                 <ProfilePreview
-                    data={friend}
                     key={i}
-                    detailNum={detail}
                     tagNum={i}
+                    data={friend}
+                    detailNum={detail}
                     onClickDetail={onClickDetail}
                 />
             )
         });
         return friendList;
-    }
+    }, [friendsData, isAbleData]);
+
     let FriendListHtml = getFriendListHtml();
     useEffect(() => {
         FriendListHtml = getFriendListHtml();
@@ -76,6 +78,7 @@ const FriendList = ({ onLoadAuth }) => {
     useEffect(() => {
         onLoadAuth(false);
     }, []);
+
     return (
         <Styled.FriendList>
             <SearchBox title={"내 친구 보기"} placeholder={"친구 검색"} />
@@ -94,6 +97,6 @@ const FriendList = ({ onLoadAuth }) => {
             </section>
         </Styled.FriendList>
     )
-}
+};
 
 export default FriendList;

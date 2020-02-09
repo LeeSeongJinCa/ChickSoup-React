@@ -1,27 +1,27 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import * as Styled from './Styled';
 import detail from '../img/details.svg';
+import unBlock from '../img/unBlock.png';
 import hideFriend from '../img/hideFriend.svg';
 import blockFriend from '../img/blockFriend.svg';
 import removeFriend from '../img/removeFriend.svg';
 import bookmarkFriend from '../img/bookmarkFriend.svg';
-import unBlock from '../img/unBlock.png';
 
 const ProfilePreview = ({ my, data, detailNum, tagNum, onClickDetail }) => {
-    const detailFilter = (e) => {
+    const detailFilter = useCallback((e) => {
         // 기본 디테일 열 때
-        if (detailNum === -1) { e.target.dataset.num = tagNum; onClickDetail(e); console.log(1)}
+        if (detailNum === -1) { e.target.dataset.num = tagNum; onClickDetail(e); }
         else {
             // 디테일 열은 것을 닫을 때
-            if (detailNum === tagNum) { e.target.dataset.num = -1; onClickDetail(e); console.log(2)}
+            if (detailNum === tagNum) { e.target.dataset.num = -1; onClickDetail(e); }
             else {
                 // 두 개의 디테일을 왔다갔다 할 때
-                if (+e.target.dataset.num === -1 && detailNum !== -1) { e.target.dataset.num = tagNum; onClickDetail(e); console.log(3)}
+                if (+e.target.dataset.num === -1 && detailNum !== -1) { e.target.dataset.num = tagNum; onClickDetail(e); }
                 // 하나의 디테일이 열려있는 도중 다른 디테일을 열 때
-                else { onClickDetail(e); e.target.dataset.num = -1; console.log(4)}
+                else { onClickDetail(e); e.target.dataset.num = -1; }
             }
         }
-    };
+    }, []);
 
     return (
         <Styled.ProfilePreview className="profile-preview">
@@ -32,17 +32,23 @@ const ProfilePreview = ({ my, data, detailNum, tagNum, onClickDetail }) => {
                 <h4>{data.nickname}</h4>
                 <p>{data.status_message}</p>
             </div>
-            {!my && <img className="profile-preview--more" src={detail} alt="moreDetails"
-                data-num={tagNum}
-                onClick={detailFilter}
-            />}
+            {!my &&
+                <img
+                    className="profile-preview--more"
+                    src={detail}
+                    alt="moreDetails"
+                    data-num={tagNum}
+                    onClick={detailFilter}
+                />
+            }
             {(detailNum !== undefined && tagNum !== undefined) && (detailNum === tagNum) &&
                 <div className="profile-preview--detail">
                     <ul>
-                        {data.mute || data.hidden ? <li>
-                            <img src={unBlock} alt="unBlock" />
-                            <span>해제하기</span>
-                        </li> :
+                        {data.mute || data.hidden ?
+                            <li>
+                                <img src={unBlock} alt="unBlock" />
+                                <span>해제하기</span>
+                            </li> :
                             <>
                                 <li>
                                     <img src={removeFriend} alt="removeFriend" />
@@ -60,7 +66,8 @@ const ProfilePreview = ({ my, data, detailNum, tagNum, onClickDetail }) => {
                                     <img src={bookmarkFriend} alt="bookmarkFriend" />
                                     <span>즐겨찾기</span>
                                 </li>
-                            </>}
+                            </>
+                        }
                     </ul>
                 </div>
             }

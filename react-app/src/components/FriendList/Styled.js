@@ -145,10 +145,10 @@ const SearchBox = styled.div`
     }
 `;
 
-export { 
-    FriendList, 
-    ProfilePreview, 
-    ListNav, 
-    SearchBox, 
-    HideBlockFriendList 
+export {
+    ListNav,
+    SearchBox,
+    FriendList,
+    ProfilePreview,
+    HideBlockFriendList,
 };
