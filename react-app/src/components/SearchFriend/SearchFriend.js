@@ -11,22 +11,20 @@ const searchData = {
     relate: 3,
 };
 
-const shakeIt = (target) => {
-    target.classList.add("shake");
-    setTimeout(() => {
-        target.classList.remove("shake");
-    }, 500);
-};
-
 const SearchFriend = ({ onLoadAuth }) => {
-    const [result, setResult] = useState(false);
-    const [input, setInput] = useState("");
     const button = useRef(null);
+    const [input, setInput] = useState("");
+    const [result, setResult] = useState(false);
+    
+    const shakeIt = (target) => {
+        target.classList.add("shake");
+        setTimeout(() => { target.classList.remove("shake"); }, 500);
+    };
     const showResult = () => {
         if (searchData.myself) shakeIt(button.current.parentNode);
         else if (input.length === 10)
             // Todo if (아이디가 존재하나?)
-            if (input === "m24YpvMWlY") setResult(true);
+            if (input === "m24YpvMWlY") setResult(true); // id 존재 여부 api 호출, but 지금은 그냥 임시로 해
             else shakeIt(button.current.parentNode);
         else shakeIt(button.current.parentNode);
     };
@@ -57,7 +55,7 @@ const SearchFriend = ({ onLoadAuth }) => {
                 <button onClick={showResult} ref={button}>
                     <img src={magnifier} alt="search" />
                 </button>
-                {result && <SearchFriendResult id={searchData.id} nickname={searchData.nickname} relate={searchData.relate} myself={searchData.myself} />}
+                {result && <SearchFriendResult searchData={searchData} />}
             </section>
         </Styled.SearchFriend>
     )
