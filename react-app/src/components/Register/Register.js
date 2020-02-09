@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import * as Styled from './Styled';
-import RegisterFirst from './RegisterFirst';
-import RegisterSecond from './RegisterSecond';
+import { RegisterFirst, RegisterSecond } from './component';
 
 const Register = ({ onLoadAuth }) => {
     const [next, setNext] = useState(true);
@@ -10,7 +9,7 @@ const Register = ({ onLoadAuth }) => {
 
     useEffect(() => {
         onLoadAuth(true); // Change background-color to Yellow
-    }, []);
+    });
 
     return (
         <Styled.Register>

@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Styled from './Styled';
+import * as Styled from '../Styled';
 
 const SearchFriendResult = ({ searchData }) => {
     const type = ["추가", "수락 대기 중", "수락", "이미 친구입니다."];

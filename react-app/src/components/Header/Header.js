@@ -1,12 +1,14 @@
-import React from 'react';
-import StyledLink from '../Common/StyledLink';
+import React, { useCallback } from 'react';
 import * as Styled from './Styled';
+import StyledLink from '../Common/StyledLink';
 import setting from '../img/setting.svg';
 import settingBlack from '../img/settingBlack.svg';
 
 const Header = ({ onLoadAuth, onLoadProfile }) => {
-    const nowAuthPage = () => onLoadAuth(true);
-    const notAuthPage = () => onLoadAuth(false);
+
+    const nowAuthPage = useCallback(() => onLoadAuth(true), []);
+    const notAuthPage = useCallback(() => onLoadAuth(false), []);
+
     return (
         <Styled.Header profile={onLoadProfile.toString()}>
             <div>

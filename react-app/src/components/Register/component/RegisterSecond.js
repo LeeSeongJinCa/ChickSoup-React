@@ -1,6 +1,6 @@
 import React from 'react';
-import * as Styled from './Styled';
-import defaultProfile from '../img/profileBlackWhite.svg';
+import * as Styled from '../Styled';
+import defaultProfile from '../../img/profileBlackWhite.svg';
 
 const RegisterSecond = () => {
     return (

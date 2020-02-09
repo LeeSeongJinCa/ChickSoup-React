@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Styled from './Styled';
+import * as Styled from '../Styled';
 
 const RegisterFirst = () => {
     return (

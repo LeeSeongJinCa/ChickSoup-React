@@ -1,11 +1,7 @@
 import React, { useEffect, useState, useReducer } from 'react';
 import * as Styled from './Styled';
-import ProfileCover from './ProfileCover';
-import ProfileText from './ProfileText';
-import ProfileNav from './ProfileNav';
+import { ProfileCover, ProfileText, ProfileNav, ProfileCoverEdit, ProfileTextEdit } from './component';
 import complete from '../img/complete.svg';
-import ProfileCoverEdit from './ProfileCoverEdit';
-import ProfileTextEdit from './ProfileTextEdit';
 
 const reducer = (state, action) => {
     return {
@@ -41,23 +37,23 @@ const Profile = ({ onLoadAuth, onLoadProfile }) => {
                 <ProfileCover />
                 {profileEdit ?
                     <>
-                        <ProfileText 
-                            nickname={state.nickname} 
-                            statusmessage={state.statusmessage} 
+                        <ProfileText
+                            nickname={state.nickname}
+                            statusmessage={state.statusmessage}
                         />
-                        <ProfileNav 
-                            onClick={onClickProfileEdit} 
+                        <ProfileNav
+                            onClick={onClickProfileEdit}
                         />
                     </> :
                     <>
                         <ProfileCoverEdit />
-                        <ProfileTextEdit 
-                            onChange={onChangeText} 
-                            nickname={state.nickname} 
-                            statusmessage={state.statusmessage} 
+                        <ProfileTextEdit
+                            onChange={onChangeText}
+                            nickname={state.nickname}
+                            statusmessage={state.statusmessage}
                         />
-                        <button 
-                            className="profile-info--complete" 
+                        <button
+                            className="profile-info--complete"
                             onClick={onClickProfileEdit}
                         >
                             <img src={complete} alt="complete-edit" />
