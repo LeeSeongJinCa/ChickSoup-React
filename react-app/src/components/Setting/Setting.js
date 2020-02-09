@@ -1,11 +1,11 @@
 import React, { useEffect, useReducer } from 'react';
 import * as Styled from './Styled';
+import { StyledLink } from '../Common';
+import { SettingId } from './component';
 import friendControl from '../img/friendListControl.svg';
 import profileYellow from '../img/profileYellow.svg';
 import logout from '../img/logout.svg';
 import id from '../img/id.svg';
-import StyledLink from '../Common/StyledLink';
-import SettingId from './SettingId';
 
 const reducer = (state, action) => {
     switch (action.type) {

@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import * as Styled from './Styled';
+import * as Styled from '../Styled';
 import close from '../img/close.png';
 
 const friendsData = [

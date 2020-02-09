@@ -1,8 +1,6 @@
 import React, { useEffect, useReducer, useCallback, useState } from 'react';
 import * as Styled from './Styled';
-import ProfilePreview from './ProfilePreview';
-import FriendListNav from './ListNav';
-import SearchBox from './SearchBox';
+import { ListNav, SearchBox, ProfilePreview } from './component';
 
 const friendsData = [
     {

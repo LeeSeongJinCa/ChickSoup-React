@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom'
-import * as components from './AppComponents';
+import { Chatting, ChattingRoom, FriendList, Header, Login, Profile, Register, SearchFriend, Setting } from './components';
+import Global from './Styled';
 
 const App = ({ location }) => {
     const [id, setId] = useState("test");
     const [page, setPage] = useState(false);
     const [headerInProfile, setHeaderInProfile] = useState(false);
-    
+
     const authPage = useCallback((how) => setPage(how), []);
     const profilePage = useCallback((how) => setHeaderInProfile(how), []);
-    
+
     useEffect(() => {
         if (location.pathname === "/") {
             authPage(false);
@@ -20,15 +21,15 @@ const App = ({ location }) => {
             setHeaderInProfile(false);
         }
     }, [location]);
-    
+
     return (
         <>
-            <components.Global page={page} />
+            <Global page={page} />
             {/* // ! root */}
             <Route
                 path="/"
                 render={() =>
-                    <components.Header
+                    <Header
                         onLoadAuth={authPage}
                         onLoadProfile={headerInProfile}
                     />
@@ -39,7 +40,7 @@ const App = ({ location }) => {
             <Route
                 path="/register"
                 render={() =>
-                    <components.Register
+                    <Register
                         onLoadAuth={authPage}
                     />
                 }
@@ -48,7 +49,7 @@ const App = ({ location }) => {
             <Route
                 path="/login"
                 render={() =>
-                    <components.Login
+                    <Login
                         onLoadAuth={authPage}
                     />
                 }
@@ -58,7 +59,7 @@ const App = ({ location }) => {
                 <Route
                     path="/profile/:name"
                     render={() =>
-                        <components.Profile
+                        <Profile
                             onLoadAuth={authPage}
                             onLoadProfile={profilePage}
                         />
@@ -67,7 +68,7 @@ const App = ({ location }) => {
                 <Route
                     path="/profile"
                     render={() =>
-                        <components.Profile
+                        <Profile
                             onLoadAuth={authPage}
                             onLoadProfile={profilePage}
                         />
@@ -78,25 +79,25 @@ const App = ({ location }) => {
             <Route
                 path="/setting"
                 render={() =>
-                    <components.Setting
+                    <Setting
                         onLoadAuth={authPage}
                         userId={id}
                     />
                 }
             />
             {/* // ! friendlist */}
-            <Route 
+            <Route
                 path="/friendlist"
-                render={() => 
-                    <components.FriendList 
+                render={() =>
+                    <FriendList
                         onLoadAuth={authPage}
                     />
                 }
             />
-            <Route 
+            <Route
                 path="/hideblockfriendlist"
-                render={() => 
-                    <components.HideBlockFriendList
+                render={() =>
+                    <HideBlockFriendList
                         onLoadAuth={authPage}
                     />
                 }
@@ -104,8 +105,8 @@ const App = ({ location }) => {
             {/* // ! searchfriend */}
             <Route
                 path="/searchfriend"
-                render={() => 
-                    <components.SearchFriend
+                render={() =>
+                    <SearchFriend
                         onLoadAuth={authPage}
                     />
                 }
@@ -114,7 +115,7 @@ const App = ({ location }) => {
             <Route
                 path="/chattingroom"
                 render={() =>
-                    <components.ChattingRoom
+                    <ChattingRoom
                         onLoadAuth={authPage}
                     />
                 }
@@ -123,7 +124,7 @@ const App = ({ location }) => {
             <Route
                 path="/chatting"
                 render={() =>
-                    <components.Chatting
+                    <Chatting
                         onLoadAuth={authPage}
                     />
                 }

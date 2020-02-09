@@ -1,0 +1,1 @@
+export { default as SearchFriendResult } from './SearchFriendResult';

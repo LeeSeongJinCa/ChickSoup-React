@@ -1,6 +1,6 @@
 import React from 'react';
 import search from '../img/search.svg';
-import * as Styled from './Styled';
+import * as Styled from '../Styled';
 
 const SearchBox = ({ title, placeholder }) => {
     return (

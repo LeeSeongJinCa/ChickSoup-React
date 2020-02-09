@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import * as Styled from './Styled';
+import * as Styled from '../Styled';
 import detail from '../img/details.svg';
 import unBlock from '../img/unBlock.png';
 import hideFriend from '../img/hideFriend.svg';

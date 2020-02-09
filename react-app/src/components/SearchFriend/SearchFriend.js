@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as Styled from './Styled';
+import { SearchFriendResult } from './component';
 import magnifier from '../img/manifierYellow.png';
-import SearchFriendResult from './SearchFriendResult';
 
 // m24YpvMWlY
 const searchData = {

@@ -1,10 +1,9 @@
 import React, { useEffect, useCallback, useState } from 'react';
 import * as Styled from './Styled';
+import { Room, NewRoomModal } from './component';
 import SearchBox from '../FriendList/SearchBox';
 import ListNav from '../FriendList/ListNav';
-import Room from './Room';
 import newChat from '../img/newChatting.svg';
-import NewRoomModal from './NewRoomModal';
 
 let roomData = [
     {
