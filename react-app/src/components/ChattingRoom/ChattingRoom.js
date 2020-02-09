@@ -50,8 +50,8 @@ const ChattingRoom = ({ onLoadAuth }) => {
     }, [roomData]);
 
     useEffect(() => {
-        onLoadAuth();
-    }, [])
+        onLoadAuth(false);
+    });
 
     return (
         <Styled.ChattingRoom>

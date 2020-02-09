@@ -77,7 +77,7 @@ const FriendList = ({ onLoadAuth }) => {
     }, [detail]);
     useEffect(() => {
         onLoadAuth(false);
-    }, []);
+    });
 
     return (
         <Styled.FriendList>

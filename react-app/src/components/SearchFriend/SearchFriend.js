@@ -30,7 +30,7 @@ const SearchFriend = ({ onLoadAuth }) => {
     };
     useEffect(() => {
         onLoadAuth();
-    }, []);
+    });
     return (
         <Styled.SearchFriend>
             <section>

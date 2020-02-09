@@ -6,7 +6,7 @@ const Login = ({ onLoadAuth }) => {
     
     useEffect(() => {
         onLoadAuth(true); // Change background-color to Yellow
-    }, []);
+    });
     
     return (
         <Styled.Login>

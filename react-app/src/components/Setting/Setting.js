@@ -24,11 +24,14 @@ const Setting = ({ onLoadAuth, userId }) => {
         reducerUserId: userId,
     });
     const { reducerIdToggle, reducerUserId } = state;
+    
     const showId = () => dispatch({ type: "showId" });
     const hideId = () => dispatch({ type: "hideId" });
+
     useEffect(() => {
         onLoadAuth(false);
     });
+    
     return (
         <Styled.Setting>
             <div className="setting-background"></div>
