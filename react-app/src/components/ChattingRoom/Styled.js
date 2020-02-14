@@ -119,7 +119,24 @@ const NewRoomModal = styled.div`
                 background-color: #FEE100;
             }
             > div {
-
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 8px; 
+                > img {
+                    max-width: 100px;
+                    max-height: 100px;
+                }
+                > span {
+                    display: inline-block;
+                    margin: 0 24px;
+                }
+                > button {
+                    padding: 16px;
+                    border: 0;
+                    border-radius: 16px;
+                    background-color: #FEE100;
+                }
             }
         }
         > button {

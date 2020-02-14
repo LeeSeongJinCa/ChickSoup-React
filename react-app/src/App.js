@@ -133,4 +133,4 @@ const App = ({ location }) => {
     )
 };
 
-export default withRouter(App);
+export default React.memo(withRouter(App));

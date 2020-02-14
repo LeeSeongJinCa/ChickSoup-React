@@ -35,21 +35,17 @@ const friendsData = [
 ];
 
 const NewRoomModal = ({ modalHandler, createNewRoom }) => {
-    // 방 이름
     const [roomName, setRoomName] = useState("");
-    const onChangeRoomName = useCallback((e) => { setRoomName(e.target.value); }, [setRoomName]);
-    // 친구 찾기
     const [search, setSearch] = useState("");
-    const onChangeSearch = useCallback((e) => { setSearch(e.target.value); }, [setSearch]);
-    // 친구 필터
+
+    const onChangeRoomName = useCallback((e) => { setRoomName(e.target.value); }, []);
+    const onChangeSearch = useCallback((e) => { setSearch(e.target.value); }, []);
     const searchFilter = useCallback((nickname) => {
-        if (search.indexOf(nickname !== -1)) return true;
-        else return false;
-    }, []);
-    // 친구 리스트
+        if (search === "") return true;
+        if (nickname.indexOf(search) === -1) return false;
+        else return true;
+    }, [search]);
     const [invited, setInvited] = useState([]);
-    //   친구 추가
-    //   친구 추가 취소
     const onClickInvitedHandler = useCallback((e, id) => {
         let text = e.target;
         if (text.innerHTML === "초대") {
@@ -70,6 +66,7 @@ const NewRoomModal = ({ modalHandler, createNewRoom }) => {
                 return (
                     <div key={i}>
                         <img src={`http://chicksoup.s3.ap-northeast-2.amazonaws.com/media/image/user/profile/${friend.id}.png`} alt="profile" />
+                        <span>{friend.nickname}</span>
                         <button onClick={(e) => onClickInvitedHandler(e, friend.id)}>
                             초대
                         </button>
@@ -78,8 +75,7 @@ const NewRoomModal = ({ modalHandler, createNewRoom }) => {
             }
             );
         return friendList;
-    }, [friendsData, isAbleData, invited, setInvited]);
-    // 방 만들기
+    }, [search]);
     const onClickCreateRoom = useCallback(() => {
         if (invited.length === 0)
             return alert("최소 1명 이상 초대해주세요.");
@@ -116,7 +112,9 @@ const NewRoomModal = ({ modalHandler, createNewRoom }) => {
                         type="text"
                         placeholder="친구 검색"
                         value={search}
-                        onChange={onChangeSearch}
+                        onChange={(e) => {
+                            onChangeSearch(e);
+                        }}
                     />
                 </div>
                 <div className="search-preview">
@@ -128,4 +126,4 @@ const NewRoomModal = ({ modalHandler, createNewRoom }) => {
     )
 };
 
-export default NewRoomModal;
+export default React.memo(NewRoomModal);
