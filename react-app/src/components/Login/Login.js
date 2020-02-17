@@ -1,13 +1,9 @@
 import React, { useEffect } from 'react';
 import * as Styled from './Styled';
 import ChickSoupLogo from '../img/chicksoupLogo.svg';
+import { Link } from 'react-router-dom';
 
-const Login = ({ onLoadAuth }) => {
-    
-    useEffect(() => {
-        onLoadAuth(true); // Change background-color to Yellow
-    });
-    
+const Login = () => {
     return (
         <Styled.Login>
             <div>
@@ -23,7 +19,9 @@ const Login = ({ onLoadAuth }) => {
                     </label>
                 </div>
                 <button>LOGIN</button>
-                <p><a href="/">회원가입</a></p>
+                <p>
+                    <Link to="/register">회원가입</Link>
+                </p>
             </div>
         </Styled.Login>
     )

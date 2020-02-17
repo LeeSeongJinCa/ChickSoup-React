@@ -44,7 +44,7 @@ const reducer = (state, action) => {
     }
 };
 
-const FriendList = ({ onLoadAuth }) => {
+const FriendList = () => {
     const [state, dispatch] = useReducer(reducer, {
         detail: -1,
     });
@@ -73,9 +73,6 @@ const FriendList = ({ onLoadAuth }) => {
     useEffect(() => {
         FriendListHtml = getFriendListHtml();
     }, [detail]);
-    useEffect(() => {
-        onLoadAuth(false);
-    });
 
     return (
         <Styled.FriendList>

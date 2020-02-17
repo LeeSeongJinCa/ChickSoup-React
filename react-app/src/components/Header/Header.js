@@ -1,33 +1,44 @@
-import React, { useCallback } from 'react';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 import * as Styled from './Styled';
 import StyledLink from '../Common/StyledLink';
 import setting from '../img/setting.svg';
 import settingBlack from '../img/settingBlack.svg';
+import leftArrow from '../img/leftArrow.svg';
+import leftArrowBrown from '../img/leftArrowBrown.svg';
 
-const Header = ({ onLoadAuth, onLoadProfile }) => {
-
-    const nowAuthPage = useCallback(() => onLoadAuth(true), []);
-    const notAuthPage = useCallback(() => onLoadAuth(false), []);
-
+const Header = () => {
+    const { pathname } = useLocation();
+    const style = pathname === "/profile" ? {
+        color: "white",
+    } : {
+        color: "black",
+    }
     return (
-        <Styled.Header profile={onLoadProfile.toString()}>
+        <Styled.Header>
             <div>
                 <div>
-                    <h1 onClick={notAuthPage}>
-                        <StyledLink to="/friendlist">Chick Soup</StyledLink>
+                    <h1>
+                        <StyledLink to="/" style={style}>Chick Soup</StyledLink>
                     </h1>
-                    <i></i>
+                    <img 
+                        src={pathname === "/profile" ? leftArrow : leftArrowBrown}
+                        alt="arrow" 
+                    />
                 </div>
                 <ul>
-                    <li onClick={nowAuthPage}>
-                        <StyledLink to="/friendlist">친구목록보기</StyledLink>
+                    <li>
+                        <StyledLink to="/" style={style}>친구목록보기</StyledLink>
                     </li>
-                    <li onClick={nowAuthPage}>
-                        <StyledLink to="/chattingroom">채팅하기</StyledLink>
+                    <li>
+                        <StyledLink to="/chattingroom" style={style}>채팅하기</StyledLink>
                     </li>
-                    <li onClick={notAuthPage}>
+                    <li>
                         <StyledLink to="/setting">
-                            <img src={onLoadProfile ? setting : settingBlack} alt="setting" />
+                            <img 
+                                src={pathname === "/profile" ? setting : settingBlack}
+                                alt="setting" 
+                            />
                         </StyledLink>
                     </li>
                 </ul>

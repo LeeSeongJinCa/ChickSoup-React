@@ -10,21 +10,25 @@ let roomData = [
         title: "DMS1",
         people: 4,
         recent: true,
+        roomId: 1,
     }, {
         rooms: [10, 13, 14],
         title: "DMS2",
         people: 3,
         recent: false,
+        roomId: 2,
     }, {
         rooms: [10, 13],
         title: "DMS3",
         people: 2,
         recent: true,
+        roomId: 3,
     }, {
         rooms: [10],
         title: "DMS4",
         people: 1,
         recent: false,
+        roomId: 4,
     }
 ];
 

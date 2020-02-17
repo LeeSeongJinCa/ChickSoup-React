@@ -2,14 +2,10 @@ import React, { useState, useEffect, useCallback } from 'react';
 import * as Styled from './Styled';
 import { RegisterFirst, RegisterSecond } from './component';
 
-const Register = ({ onLoadAuth }) => {
+const Register = () => {
     const [next, setNext] = useState(true);
 
     const movePage = useCallback((bool) => { setNext(bool); }, [setNext]);
-
-    useEffect(() => {
-        onLoadAuth(true); // Change background-color to Yellow
-    });
 
     return (
         <Styled.Register>

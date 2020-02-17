@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useReducer } from 'react';
+import React, { useState, useReducer, useCallback } from 'react';
 import * as Styled from './Styled';
 import { ProfileCover, ProfileText, ProfileNav, ProfileCoverEdit, ProfileTextEdit } from './component';
 import complete from '../img/complete.svg';
+import { Header } from '../Header';
 
 const reducer = (state, action) => {
     return {
@@ -10,58 +11,50 @@ const reducer = (state, action) => {
     };
 };
 
-const Profile = ({ onLoadAuth, onLoadProfile }) => {
+const Profile = () => {
     const [profileEdit, setProfileEdit] = useState(true);
     const [state, dispatch] = useReducer(reducer, {
         nickname: "nickname",
         statusmessage: "statusmessage",
     });
-    const onChangeText = (e) => {
-        dispatch(e.target);
-    };
-    const notAuthPage = () => onLoadAuth(false);
-    const nowProfilePage = () => onLoadProfile(true);
-    const onClickProfileEdit = () => {
-        setProfileEdit(!profileEdit);
-    }
-    useEffect(() => {
-        notAuthPage();
-        nowProfilePage();
-    });
+    const onChangeText = useCallback((e) => dispatch(e.target), []);
+    const onClickProfileEdit = useCallback(() => setProfileEdit(!profileEdit), []);
+
     return (
-        <Styled.Profile>
-            <div className="profile-background">
-                <div></div>
-            </div>
-            <div className="profile-info">
-                <ProfileCover />
-                {profileEdit ?
-                    <>
-                        <ProfileText
-                            nickname={state.nickname}
-                            statusmessage={state.statusmessage}
-                        />
-                        <ProfileNav
-                            onClick={onClickProfileEdit}
-                        />
-                    </> :
-                    <>
-                        <ProfileCoverEdit />
-                        <ProfileTextEdit
-                            onChange={onChangeText}
-                            nickname={state.nickname}
-                            statusmessage={state.statusmessage}
-                        />
-                        <button
-                            className="profile-info--complete"
-                            onClick={onClickProfileEdit}
-                        >
-                            <img src={complete} alt="complete-edit" />
-                            <p>프로필 수정</p>
-                        </button>
-                    </>}
-            </div>
-        </Styled.Profile>
+        <>
+            <Header />
+            <Styled.Profile>
+                <div className="profile-background">
+                    <div></div>
+                </div>
+                <div className="profile-info">
+                    <ProfileCover />
+                    {profileEdit ?
+                        <>
+                            <ProfileText
+                                nickname={state.nickname}
+                                statusmessage={state.statusmessage}
+                            />
+                            <ProfileNav onClick={onClickProfileEdit} />
+                        </> :
+                        <>
+                            <ProfileCoverEdit />
+                            <ProfileTextEdit
+                                onChange={onChangeText}
+                                nickname={state.nickname}
+                                statusmessage={state.statusmessage}
+                            />
+                            <button
+                                className="profile-info--complete"
+                                onClick={onClickProfileEdit}
+                            >
+                                <img src={complete} alt="complete-edit" />
+                                <p>프로필 수정</p>
+                            </button>
+                        </>}
+                </div>
+            </Styled.Profile>
+        </>
     )
 };
 

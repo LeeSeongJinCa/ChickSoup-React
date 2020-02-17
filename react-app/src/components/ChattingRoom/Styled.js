@@ -33,7 +33,10 @@ const Room = styled.li`
     text-align: center;
     transition: 0.3s ease-in-out;
     cursor: pointer;
-    > div {
+    a {
+        color: black;
+    }
+    div {
         position: relative;
         display: flex;
         justify-content: center;
@@ -41,13 +44,13 @@ const Room = styled.li`
         height: 160px;
         border: 1px solid #1A1A1A;
         border-radius: 16px;
-        > img {
+        img {
             align-self: center;
             max-width: 160px;
             max-height: 160px;
             border-radius: 16px;
         }
-        > span {
+        span {
             position: absolute;
             right: -10px;
             bottom: -10px;
